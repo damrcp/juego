@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página en Mantenimiento</title>
-    <style>
-        /* Reset de márgenes y paddings */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego RCP - Salva una Vida</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="header">
+        <h2>JUEGO RCP SIMULACION 2D</h2>
+        <div class="timer-display" id="timer">00:30</div>
+      </div>
 
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            text-align: center;
-        }
+      <div class="info-bar">
+        <div class="score-display" id="score-display">0/0</div>
+        <div class="instructions" id="instructions">
+          Pulsa "Espacio" para iniciar.
+        </div>
+      </div>
 
-        .container {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1.5s ease-in-out;
-        }
+      <div class="game-area">
+        <div class="curtain" id="start-curtain">
+          <button class="play-button" id="play-button">¡JUGAR!</button>
+        </div>
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+        <div class="cpr-image-container" id="cpr-image"></div>
 
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
+        <div id="barraContainer">
+            <div id="textoPuntos"></div>
+            <div id="trianguloRojo"></div>
+            <div id="barraCeleste">
+                <div id="zonaNaranjaIzq"></div>
+                <div id="zonaRoja"></div>
+                <div id="zonaNaranjaDer"></div>
+                <div id="rectanguloVerde"></div>
+            </div>
+        </div>
 
-        .icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        a {
-            display: inline-block;
-            text-decoration: none;
-            color: #764ba2;
-            background: #fff;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        a:hover {
-            background: #764ba2;
-            color: #fff;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="icon">🛠️</div>
-        <h1>Página en Mantenimiento</h1>
-        <p>Estamos trabajando para mejorar nuestra web. ¡Vuelve pronto!</p>
+        <div class="air-prompt" id="air-prompt">
+          PULSA **ENTER** PARA DAR AIRE
+        </div>
+      </div>
     </div>
-</body>
+
+    <div class="results-curtain" id="results-curtain">
+      <h3>Resultados de la Partida</h3>
+      <div class="result-item">
+        Tiempo Jugado: <span id="time-result"></span>
+      </div>
+      <div class="result-item">
+        Aciertos/Fallos: <span id="hits-misses-result"></span>
+      </div>
+      <div class="result-item">
+        Porcentaje de Aciertos: <span id="percentage-result"></span>
+      </div>
+      <div class="result-item" id="cpr-status"></div>
+
+      <input
+        type="text"
+        id="player-name"
+        class="name-input"
+        placeholder="Introduce Nombre, apellido y curso (EJ: Juan Pérez 2ºDAM)"
+      />
+      <button class="restart-button" id="save-and-restart-button">
+        Guardar Puntuación y Volver a Jugar
+      </button>
+    </div>
+
+    <div class="ranking-container">
+      <h3>TOP 10 Ranking</h3>
+      <ul class="ranking-list" id="ranking-list"></ul>
+      <button id="download-ranking" class="download-button" title="Descargar Ranking">📥</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
